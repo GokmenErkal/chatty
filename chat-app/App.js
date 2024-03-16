@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, SafeAreaView, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
+const Home = ({ navigation }) => {
+  const handleSettings = () => {
+    navigation.navigate('SettingsPage')
+  }
+  return (
+    <SafeAreaView>
+      <Text style={{fontSize: 24}}>Home</Text>
+      <Button title='Settings ->' onPress={handleSettings}/>
+    </SafeAreaView>
+  )
+
+}
+const Settings = ({navigation}) => {
+  const handleHome = () => {
+    navigation.navigate('HomePage')
+  }
+  return (
+    <SafeAreaView>
+      <Text style={{fontSize: 18}}>Settings</Text>
+      <Button title='Home' onPress={handleHome}/>
+    </SafeAreaView>
+  )
+}
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name='HomePage' component={Home} />
+        <Stack.Screen name='SettingsPage' component={Settings} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
