@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { colors } from "../../config/constants";
 
 export default StyleSheet.create({
     row: {
@@ -11,7 +12,7 @@ export default StyleSheet.create({
     avatar: {
         width: 56,
         height: 56,
-        backgroundColor: '#2196f3',
+        backgroundColor: colors.primary,
         borderRadius: 28,
         marginRight: 8,
         alignItems: 'center',
@@ -31,9 +32,4 @@ export default StyleSheet.create({
         color: '#565656',
         marginTop: 3
     },
-    serprator: {
-        height: StyleSheet.hairlineWidth,
-        backgroundColor: 'gray',
-        marginStart: 75,
-    }
 })

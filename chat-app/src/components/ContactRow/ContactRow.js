@@ -1,13 +1,13 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
+import Ionicons from '@expo/vector-icons/Ionicons'
 import styles from './ContactRow.style'
 
-const ContactRow = ({ name, subtitle, onPress }) => {
+const ContactRow = ({ name, subtitle, onPress, style }) => {
     return (
         <>
             <TouchableOpacity
-                style={styles.row}
+                style={[styles.row, style]}
                 onPress={onPress}
             >
                 <View style={styles.avatar}>
@@ -23,7 +23,6 @@ const ContactRow = ({ name, subtitle, onPress }) => {
                 </View>
                 <Ionicons name='chevron-forward-outline' size={25} />
             </TouchableOpacity>
-            <View style={styles.serprator} />
         </>
     )
 }
