@@ -1,5 +1,6 @@
 import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons'
+import { colors } from './src/config/constants';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
@@ -8,19 +9,18 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FlashMessage from 'react-native-flash-message';
 
 // pages
+import Chat from './src/screens/Chat/Chat';
 import Chats from './src/screens/Chats';
-import Settings from './src/screens/Settings/Settings';
-import SignUp from './src/screens/SignUp/SignUp'
-import { colors } from './src/config/constants';
-import Chat from './src/screens/Chat';
 import Login from './src/screens/Login/Login';
+import SignUp from './src/screens/SignUp/SignUp'
+import Settings from './src/screens/Settings/Settings';
 
-const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const Tabs = createBottomTabNavigator();
 const ChatsStack = createStackNavigator();
 const SettingsStack = createStackNavigator();
 
-const ChatsScreen = ({ navigation }) => {
+const ChatsScreen = () => {
   return (
     <ChatsStack.Navigator>
       <ChatsStack.Screen

@@ -1,10 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
-import app from '../config/firebaseConfig'
-import { getAuth } from 'firebase/auth'
+import app from '../../config/firebaseConfig'
 import { getFirestore, doc, onSnapshot, setDoc } from 'firebase/firestore'
 
-const auth = getAuth(app);
 const firestore = getFirestore(app)
 
 const Chat = ({ route }) => {
@@ -23,7 +21,7 @@ const Chat = ({ route }) => {
         setDoc(doc(firestore, `chats/${route.params.id}`), {
             messages: GiftedChat.append(messages, m)
         },
-        {merge: true}
+            { merge: true }
         )
     }, [route.params.id, messages])
 

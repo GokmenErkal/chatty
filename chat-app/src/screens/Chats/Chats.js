@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { SafeAreaView, View, TouchableOpacity, Alert } from 'react-native'
 
 import ContactRow from '../../components/ContactRow/ContactRow'
-import Serprator from '../../components/Serprator'
+import Serprator from '../../components/Separator/Separator'
 import app from '../../config/firebaseConfig'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
-import { addDoc, collection, getDocs, getFirestore, onSnapshot } from 'firebase/firestore'
+import { getAuth } from 'firebase/auth'
+import { addDoc, collection, getFirestore, onSnapshot } from 'firebase/firestore'
 import { Ionicons } from '@expo/vector-icons'
 import styles from './Chats.style'
 

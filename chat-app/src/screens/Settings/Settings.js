@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, Button, TouchableOpacity } from 'react-native'
 
 import ContactRow from '../../components/ContactRow/ContactRow'
-import Serprator from '../../components/Serprator'
+import Serprator from '../../components/Separator/Separator'
 import styles from './Settings.style'
 import Logout from '../../components/Logout/Logout'
 import { colors } from '../../config/constants'
