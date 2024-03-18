@@ -1,29 +1,31 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
+import app from '../config/firebaseConfig'
+import { getAuth } from 'firebase/auth'
+import { getFirestore, doc, onSnapshot, setDoc } from 'firebase/firestore'
 
-const Example = () => {
+const auth = getAuth(app);
+const firestore = getFirestore(app)
+
+const Chat = ({ route }) => {
     const [messages, setMessages] = useState([])
 
     useEffect(() => {
-        setMessages([
-            {
-                _id: 1,
-                text: 'Hello developer',
-                createdAt: new Date(),
-                user: {
-                    _id: 2,
-                    name: 'React Native',
-                    avatar: 'https://placeimg.com/140/140/any',
-                },
-            },
-        ])
-    }, [])
+        onSnapshot(doc(firestore, 'chats/' + route.params.id), (doc) => {
+            setMessages(doc.data().messages.map(message => ({
+                ...message,
+                createdAt: message.createdAt.toDate()
+            })));
+        })
+    }, [route.params.id])
 
-    const onSend = useCallback((messages = []) => {
-        setMessages(previousMessages =>
-            GiftedChat.append(previousMessages, messages),
+    const onSend = useCallback((m = []) => {
+        setDoc(doc(firestore, `chats/${route.params.id}`), {
+            messages: GiftedChat.append(messages, m)
+        },
+        {merge: true}
         )
-    }, [])
+    }, [route.params.id, messages])
 
     return (
         <GiftedChat
@@ -36,4 +38,4 @@ const Example = () => {
     )
 }
 
-export default Example
+export default Chat

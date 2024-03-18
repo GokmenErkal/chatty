@@ -5,7 +5,8 @@ export default StyleSheet.create({
         backgroundColor: 'black',
         padding: 12,
         borderRadius: 10,
-        width: 120
+        width: 330,
+        marginTop: 20
     },
     btnLabel:{
         color: '#fff',

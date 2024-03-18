@@ -7,7 +7,12 @@ import styles from './Settings.style'
 import Logout from '../../components/Logout/Logout'
 import { colors } from '../../config/constants'
 
-const Settings = () => {
+import app from '../../config/firebaseConfig'
+import { getAuth, signOut } from 'firebase/auth'
+
+const auth = getAuth(app)
+
+const Settings = ({ navigation }) => {
 
     return (
         <View>
@@ -18,14 +23,17 @@ const Settings = () => {
             />
             <Serprator />
             <Logout
-                title='Logout'
+                title='Çıkış yap'
                 icon='log-out-outline'
                 tintColor={colors.red}
-                onPress={() => console.log('Çıkış yapıldı')}
+                onPress={() => {
+                    signOut(auth)
+                    navigation.navigate('Login')
+                }}
                 style={{ marginVertical: 10 }}
             />
             <Logout
-                title='Help'
+                title='Yardım'
                 icon='information-outline'
                 tintColor={colors.green}
                 onPress={() => console.log('Çıkış yapıldı')}

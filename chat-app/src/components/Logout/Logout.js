@@ -3,7 +3,7 @@ import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import styles from './Logout.style'
 
-const Logout = ({title, icon, tintColor, onPress, style}) => {
+const Logout = ({title='', icon, tintColor, onPress, style=""}) => {
     return (
         <TouchableOpacity style={[styles.cell, style]} onPress={onPress}>
             <View style={[styles.iconContainer, {backgroundColor: tintColor}]}>

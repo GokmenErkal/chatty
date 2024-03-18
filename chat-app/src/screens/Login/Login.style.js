@@ -4,7 +4,7 @@ import { colors } from "../../config/constants";
 export default StyleSheet.create({
     container: {
         backgroundColor: colors.primary,
-        flex: 1,
+        flex: 1
     },
     title: {
         color: '#fff',
@@ -23,5 +23,4 @@ export default StyleSheet.create({
     contentContainer: {
         padding: 28
     },
-    
 })

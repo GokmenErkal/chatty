@@ -1,12 +1,22 @@
 import React from 'react'
-import { TouchableOpacity, Text } from 'react-native'
+import { TouchableOpacity, Text, View } from 'react-native'
 import styles from './Button.style'
+import Loading from '../Loading/Loading'
 
-const Button = ({ title, color }) => {
+const Button = ({ title, color, onPress, loading }) => {
     return (
-        <TouchableOpacity style={[styles.btnContainer, {backgroundColor: color}]}>
-            <Text style={styles.btnLabel} >{title}</Text>
-        </TouchableOpacity>
+        <View>
+            <TouchableOpacity
+                style={[styles.btnContainer, { backgroundColor: color }]}
+                onPress={onPress}
+            >
+                {
+                    loading ?
+                        <Loading /> :
+                        <Text style={styles.btnLabel} >{title}</Text>
+                }
+            </TouchableOpacity>
+        </View>
     )
 }
 
